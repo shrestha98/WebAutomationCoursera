@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test For Chrome(failed)">
-    <parameter name="browserName" value="chrome"/>
-    <classes>
-      <class name="cts.automation.courseraWebAutomation.execute.TestCases">
-        <methods>
-          <include name="coursesSearched"/>
-          <include name="errorMessage"/>
-          <include name="beforeClass"/>
-          <include name="totalCourses"/>
-          <include name="afterClass"/>
-        </methods>
-      </class> <!-- cts.automation.courseraWebAutomation.execute.TestCases -->
-    </classes>
-  </test> <!-- Test For Chrome(failed) -->
   <test thread-count="5" name="Test For Firefox(failed)">
     <parameter name="browserName" value="firefox"/>
     <classes>
@@ -29,4 +15,18 @@
       </class> <!-- cts.automation.courseraWebAutomation.execute.TestCases -->
     </classes>
   </test> <!-- Test For Firefox(failed) -->
+  <test thread-count="5" name="Test For Chrome(failed)">
+    <parameter name="browserName" value="chrome"/>
+    <classes>
+      <class name="cts.automation.courseraWebAutomation.execute.TestCases">
+        <methods>
+          <include name="coursesSearched"/>
+          <include name="errorMessage"/>
+          <include name="beforeClass"/>
+          <include name="totalCourses"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- cts.automation.courseraWebAutomation.execute.TestCases -->
+    </classes>
+  </test> <!-- Test For Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

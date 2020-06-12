@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 3 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Suite" class="navigator-link">
-              <span class="suite-name border-skipped">Suite</span>
+              <span class="suite-name border-failed">Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Suite" class="navigator-link ">
-                    <span>C:\Users\asus\Desktop\Major Project\courseraWebAutomation\TestNG.xml</span>
+                    <span>C:\Users\asus\Desktop\Major Project\courseraWebAutomationLocal\testng.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,7 +91,31 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">6 methods,  6 skipped,  </span>
+                    <span class="method-stats">6 methods, 3 failed,  3 skipped,  </span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Suite" class="hide-methods failed suite-Suite"> (hide)</a> <!-- hide-methods failed suite-Suite -->
+                      <a href="#" panel-name="suite-Suite" class="show-methods failed suite-Suite"> (show)</a> <!-- show-methods failed suite-Suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="cts.automation.courseraWebAutomation.execute.TestCases" class="method navigator-link" hash-for-method="coursesSearched">coursesSearched</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="cts.automation.courseraWebAutomation.execute.TestCases" class="method navigator-link" hash-for-method="errorMessage">errorMessage</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="cts.automation.courseraWebAutomation.execute.TestCases" class="method navigator-link" hash-for-method="totalCourses">totalCourses</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Suite -->
                   </li>
                   <li>
                     <span class="method-list-title skipped">Skipped methods</span>
@@ -107,22 +131,7 @@
                       <br/>
                       <span>
                         <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="cts.automation.courseraWebAutomation.execute.TestCases" class="method navigator-link" hash-for-method="coursesSearched">coursesSearched</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite" title="cts.automation.courseraWebAutomation.execute.TestCases" class="method navigator-link" hash-for-method="errorMessage">errorMessage</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="cts.automation.courseraWebAutomation.execute.TestCases" class="method navigator-link" hash-for-method="errorMessage">errorMessage</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="cts.automation.courseraWebAutomation.execute.TestCases" class="method navigator-link" hash-for-method="totalCourses">totalCourses</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -142,6 +151,97 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Suite" class="panel Suite">
+          <div class="suite-Suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">cts.automation.courseraWebAutomation.execute.TestCases</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="coursesSearched">
+                  </a> <!-- coursesSearched -->
+                  <span class="method-name">coursesSearched</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=83.0.4103.97)
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;LAPTOP-PIV5FN12&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;13.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 83.0.4103.97, chrome: {chromedriverVersion: 83.0.4103.39 (ccbf011cb2d2b..., userDataDir: C:\Users\asus\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:57705}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 5876b97ba376923a9b8ce5ac3458ba14
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
+	at org.openqa.selenium.remote.RemoteWebDriver.getCurrentUrl(RemoteWebDriver.java:287)
+	at cts.automation.courseraWebAutomation.CoursesOffered.totalCoursesOffered(CoursesOffered.java:52)
+	at cts.automation.courseraWebAutomation.execute.TestCases.coursesSearched(TestCases.java:55)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1507)
+... Removed 32 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="errorMessage">
+                  </a> <!-- errorMessage -->
+                  <span class="method-name">errorMessage</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=83.0.4103.97)
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;LAPTOP-PIV5FN12&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;13.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 83.0.4103.97, chrome: {chromedriverVersion: 83.0.4103.39 (ccbf011cb2d2b..., userDataDir: C:\Users\asus\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:57705}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 5876b97ba376923a9b8ce5ac3458ba14
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:837)
+	at cts.automation.courseraWebAutomation.ForEnterprise.errorMessageAtEnterprise(ForEnterprise.java:49)
+	at cts.automation.courseraWebAutomation.execute.TestCases.errorMessage(TestCases.java:63)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1507)
+... Removed 32 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="totalCourses">
+                  </a> <!-- totalCourses -->
+                  <span class="method-name">totalCourses</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=83.0.4103.97)
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;LAPTOP-PIV5FN12&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;13.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 83.0.4103.97, chrome: {chromedriverVersion: 83.0.4103.39 (ccbf011cb2d2b..., userDataDir: C:\Users\asus\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:57705}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 5876b97ba376923a9b8ce5ac3458ba14
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:277)
+	at cts.automation.courseraWebAutomation.TotalCount.totalCountOfCourses(TotalCount.java:43)
+	at cts.automation.courseraWebAutomation.execute.TestCases.totalCourses(TestCases.java:71)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1507)
+... Removed 32 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Suite-class-failed -->
           <div class="suite-Suite-class-skipped">
             <div class="main-panel-header rounded-window-top">
               <img src="skipped.png"/>
@@ -153,73 +253,6 @@
                   <a name="coursesSearched">
                   </a> <!-- coursesSearched -->
                   <span class="method-name">coursesSearched</span>
-                  <div class="stack-trace">org.openqa.selenium.SessionNotCreatedException: session not created
-from chrome not reachable
-  (Session info: chrome=83.0.4103.97)
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;LAPTOP-PIV5FN12&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;13.0.2&apos;
-Driver info: driver.version: ChromeDriver
-remote stacktrace: Backtrace:
-	Ordinal0 [0x01359563+2725219]
-	Ordinal0 [0x01258551+1672529]
-	Ordinal0 [0x01140202+524802]
-	Ordinal0 [0x011399B2+498098]
-	Ordinal0 [0x0113A09B+499867]
-	Ordinal0 [0x0113AFF5+503797]
-	Ordinal0 [0x01136994+485780]
-	Ordinal0 [0x01140FF0+528368]
-	Ordinal0 [0x010ED6C9+186057]
-	Ordinal0 [0x010ECA3D+182845]
-	Ordinal0 [0x010EA94B+174411]
-	Ordinal0 [0x010D2528+75048]
-	Ordinal0 [0x010D35A0+79264]
-	Ordinal0 [0x010D3539+79161]
-	Ordinal0 [0x0126D607+1758727]
-	GetHandleVerifier [0x01476546+1050150]
-	GetHandleVerifier [0x01476291+1049457]
-	GetHandleVerifier [0x014810D7+1094071]
-	GetHandleVerifier [0x01476B46+1051686]
-	Ordinal0 [0x01265B06+1727238]
-	Ordinal0 [0x0126EB7B+1764219]
-	Ordinal0 [0x0126ECE3+1764579]
-	Ordinal0 [0x01284C05+1854469]
-	BaseThreadInitThunk [0x77350419+25]
-	RtlGetAppContainerNamedObjectPath [0x774966DD+237]
-	RtlGetAppContainerNamedObjectPath [0x774966AD+189]
-
-	at org.openqa.selenium.remote.W3CHandshakeResponse.lambda$errorHandler$0(W3CHandshakeResponse.java:62)
-	at org.openqa.selenium.remote.HandshakeResponse.lambda$getResponseFunction$0(HandshakeResponse.java:30)
-	at org.openqa.selenium.remote.ProtocolHandshake.lambda$createSession$0(ProtocolHandshake.java:126)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
-	at java.base/java.util.Spliterators$ArraySpliterator.tryAdvance(Spliterators.java:958)
-	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:127)
-	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:502)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:488)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
-	at java.base/java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:150)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-	at java.base/java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:543)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:128)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:74)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:136)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:213)
-	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:131)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:181)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:168)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:123)
-	at cts.automation.courseraWebAutomation.execute.TestCases.beforeClass(TestCases.java:46)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1507)
-... Removed 30 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="coursesSearched">
-                  </a> <!-- coursesSearched -->
-                  <span class="method-name">coursesSearched</span>
                   <div class="stack-trace">org.openqa.selenium.WebDriverException: permission denied
 Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
 System info: host: &apos;LAPTOP-PIV5FN12&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;13.0.2&apos;
@@ -257,73 +290,6 @@ remote stacktrace:
                   <a name="errorMessage">
                   </a> <!-- errorMessage -->
                   <span class="method-name">errorMessage</span>
-                  <div class="stack-trace">org.openqa.selenium.SessionNotCreatedException: session not created
-from chrome not reachable
-  (Session info: chrome=83.0.4103.97)
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;LAPTOP-PIV5FN12&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;13.0.2&apos;
-Driver info: driver.version: ChromeDriver
-remote stacktrace: Backtrace:
-	Ordinal0 [0x01359563+2725219]
-	Ordinal0 [0x01258551+1672529]
-	Ordinal0 [0x01140202+524802]
-	Ordinal0 [0x011399B2+498098]
-	Ordinal0 [0x0113A09B+499867]
-	Ordinal0 [0x0113AFF5+503797]
-	Ordinal0 [0x01136994+485780]
-	Ordinal0 [0x01140FF0+528368]
-	Ordinal0 [0x010ED6C9+186057]
-	Ordinal0 [0x010ECA3D+182845]
-	Ordinal0 [0x010EA94B+174411]
-	Ordinal0 [0x010D2528+75048]
-	Ordinal0 [0x010D35A0+79264]
-	Ordinal0 [0x010D3539+79161]
-	Ordinal0 [0x0126D607+1758727]
-	GetHandleVerifier [0x01476546+1050150]
-	GetHandleVerifier [0x01476291+1049457]
-	GetHandleVerifier [0x014810D7+1094071]
-	GetHandleVerifier [0x01476B46+1051686]
-	Ordinal0 [0x01265B06+1727238]
-	Ordinal0 [0x0126EB7B+1764219]
-	Ordinal0 [0x0126ECE3+1764579]
-	Ordinal0 [0x01284C05+1854469]
-	BaseThreadInitThunk [0x77350419+25]
-	RtlGetAppContainerNamedObjectPath [0x774966DD+237]
-	RtlGetAppContainerNamedObjectPath [0x774966AD+189]
-
-	at org.openqa.selenium.remote.W3CHandshakeResponse.lambda$errorHandler$0(W3CHandshakeResponse.java:62)
-	at org.openqa.selenium.remote.HandshakeResponse.lambda$getResponseFunction$0(HandshakeResponse.java:30)
-	at org.openqa.selenium.remote.ProtocolHandshake.lambda$createSession$0(ProtocolHandshake.java:126)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
-	at java.base/java.util.Spliterators$ArraySpliterator.tryAdvance(Spliterators.java:958)
-	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:127)
-	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:502)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:488)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
-	at java.base/java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:150)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-	at java.base/java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:543)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:128)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:74)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:136)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:213)
-	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:131)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:181)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:168)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:123)
-	at cts.automation.courseraWebAutomation.execute.TestCases.beforeClass(TestCases.java:46)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1507)
-... Removed 30 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="errorMessage">
-                  </a> <!-- errorMessage -->
-                  <span class="method-name">errorMessage</span>
                   <div class="stack-trace">org.openqa.selenium.WebDriverException: permission denied
 Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
 System info: host: &apos;LAPTOP-PIV5FN12&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;13.0.2&apos;
@@ -351,73 +317,6 @@ remote stacktrace:
 	at org.openqa.selenium.firefox.FirefoxDriver.&lt;init&gt;(FirefoxDriver.java:147)
 	at org.openqa.selenium.firefox.FirefoxDriver.&lt;init&gt;(FirefoxDriver.java:125)
 	at cts.automation.courseraWebAutomation.execute.TestCases.beforeClass(TestCases.java:40)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1507)
-... Removed 30 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="totalCourses">
-                  </a> <!-- totalCourses -->
-                  <span class="method-name">totalCourses</span>
-                  <div class="stack-trace">org.openqa.selenium.SessionNotCreatedException: session not created
-from chrome not reachable
-  (Session info: chrome=83.0.4103.97)
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;LAPTOP-PIV5FN12&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;13.0.2&apos;
-Driver info: driver.version: ChromeDriver
-remote stacktrace: Backtrace:
-	Ordinal0 [0x01359563+2725219]
-	Ordinal0 [0x01258551+1672529]
-	Ordinal0 [0x01140202+524802]
-	Ordinal0 [0x011399B2+498098]
-	Ordinal0 [0x0113A09B+499867]
-	Ordinal0 [0x0113AFF5+503797]
-	Ordinal0 [0x01136994+485780]
-	Ordinal0 [0x01140FF0+528368]
-	Ordinal0 [0x010ED6C9+186057]
-	Ordinal0 [0x010ECA3D+182845]
-	Ordinal0 [0x010EA94B+174411]
-	Ordinal0 [0x010D2528+75048]
-	Ordinal0 [0x010D35A0+79264]
-	Ordinal0 [0x010D3539+79161]
-	Ordinal0 [0x0126D607+1758727]
-	GetHandleVerifier [0x01476546+1050150]
-	GetHandleVerifier [0x01476291+1049457]
-	GetHandleVerifier [0x014810D7+1094071]
-	GetHandleVerifier [0x01476B46+1051686]
-	Ordinal0 [0x01265B06+1727238]
-	Ordinal0 [0x0126EB7B+1764219]
-	Ordinal0 [0x0126ECE3+1764579]
-	Ordinal0 [0x01284C05+1854469]
-	BaseThreadInitThunk [0x77350419+25]
-	RtlGetAppContainerNamedObjectPath [0x774966DD+237]
-	RtlGetAppContainerNamedObjectPath [0x774966AD+189]
-
-	at org.openqa.selenium.remote.W3CHandshakeResponse.lambda$errorHandler$0(W3CHandshakeResponse.java:62)
-	at org.openqa.selenium.remote.HandshakeResponse.lambda$getResponseFunction$0(HandshakeResponse.java:30)
-	at org.openqa.selenium.remote.ProtocolHandshake.lambda$createSession$0(ProtocolHandshake.java:126)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
-	at java.base/java.util.Spliterators$ArraySpliterator.tryAdvance(Spliterators.java:958)
-	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:127)
-	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:502)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:488)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
-	at java.base/java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:150)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-	at java.base/java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:543)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:128)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:74)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:136)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:213)
-	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:131)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:181)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:168)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:123)
-	at cts.automation.courseraWebAutomation.execute.TestCases.beforeClass(TestCases.java:46)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1507)
 ... Removed 30 stack frames
 </div> <!-- stack-trace -->
@@ -465,25 +364,25 @@ remote stacktrace:
         </div> <!-- panel Suite -->
         <div panel-name="test-xml-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\asus\Desktop\Major Project\courseraWebAutomation\TestNG.xml</span>
+            <span class="header-content">C:\Users\asus\Desktop\Major Project\courseraWebAutomationLocal\testng.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;Suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
-  &lt;test thread-count=&quot;5&quot; name=&quot;Test For Chrome&quot;&gt;
-    &lt;parameter name=&quot;browserName&quot; value=&quot;chrome&quot;/&gt;
-    &lt;classes&gt;
-      &lt;class name=&quot;cts.automation.courseraWebAutomation.execute.TestCases&quot;/&gt;
-    &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- Test For Chrome --&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Test For Firefox&quot;&gt;
     &lt;parameter name=&quot;browserName&quot; value=&quot;firefox&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;cts.automation.courseraWebAutomation.execute.TestCases&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test For Firefox --&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;Test For Chrome&quot;&gt;
+    &lt;parameter name=&quot;browserName&quot; value=&quot;chrome&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;cts.automation.courseraWebAutomation.execute.TestCases&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- Test For Chrome --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -495,10 +394,10 @@ remote stacktrace:
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Test For Chrome (1 class)</span>
+                <span class="test-name">Test For Firefox (1 class)</span>
               </li>
               <li>
-                <span class="test-name">Test For Firefox (1 class)</span>
+                <span class="test-name">Test For Chrome (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -526,23 +425,23 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(6);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'errorMessage')
+data.setCell(0, 1, 'coursesSearched')
 data.setCell(0, 2, 'cts.automation.courseraWebAutomation.execute.TestCases')
-data.setCell(0, 3, 0);
+data.setCell(0, 3, 5472);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'coursesSearched')
+data.setCell(1, 1, 'totalCourses')
 data.setCell(1, 2, 'cts.automation.courseraWebAutomation.execute.TestCases')
-data.setCell(1, 3, 0);
+data.setCell(1, 3, 64);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'totalCourses')
+data.setCell(2, 1, 'errorMessage')
 data.setCell(2, 2, 'cts.automation.courseraWebAutomation.execute.TestCases')
-data.setCell(2, 3, 0);
+data.setCell(2, 3, 8);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'coursesSearched')
+data.setCell(3, 1, 'errorMessage')
 data.setCell(3, 2, 'cts.automation.courseraWebAutomation.execute.TestCases')
 data.setCell(3, 3, 0);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'errorMessage')
+data.setCell(4, 1, 'coursesSearched')
 data.setCell(4, 2, 'cts.automation.courseraWebAutomation.execute.TestCases')
 data.setCell(4, 3, 0);
 data.setCell(5, 0, 5)
@@ -553,7 +452,7 @@ window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 0 ms</span>
+              <span class="suite-total-time">Total running time: 5 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -583,46 +482,52 @@ return data;
               <div class="configuration-class before">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">beforeClass(chrome)</span>
+                <span class="method-name">beforeClass(firefox)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">coursesSearched</span>
-                <span class="method-start">8063 ms</span>
+                <span class="method-start">31965 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">totalCourses</span>
-                <span class="method-start">8072 ms</span>
+                <span class="method-start">31976 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">errorMessage</span>
-                <span class="method-start">8077 ms</span>
+                <span class="method-start">31985 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">8082 ms</span>
+                <span class="method-start">31993 ms</span>
               </div> <!-- configuration-class after -->
               <div class="configuration-class before">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">beforeClass(firefox)</span>
-                <span class="method-start">8136 ms</span>
+                <span class="method-name">beforeClass(chrome)</span>
+                <span class="method-start">32129 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">coursesSearched</span>
-                <span class="method-start">25276 ms</span>
+                <span class="method-start">49010 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">totalCourses</span>
-                <span class="method-start">25281 ms</span>
+                <span class="method-start">54486 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">errorMessage</span>
-                <span class="method-start">25285 ms</span>
+                <span class="method-start">54551 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">afterClass</span>
-                <span class="method-start">25288 ms</span>
+                <span class="method-start">54561 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
