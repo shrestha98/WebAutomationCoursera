@@ -32,7 +32,7 @@ public class TestCases
 	@BeforeClass
 	@Parameters({"browserName"})
 	
-	  public void beforeClass(String browserName) throws Exception
+	  public void beforeClass(@Optional("firefox")String browserName) throws Exception
 	  {
 		if(browserName.equalsIgnoreCase("firefox"))
 		{
