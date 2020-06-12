@@ -32,18 +32,18 @@ public class TestCases
 	@BeforeClass
 	@Parameters({"browserName"})
 	
-	  public void beforeClass(@Optional("firefox")String browserName) throws Exception
+	  public void beforeClass(@Optional("chrome")String browserName) throws Exception
 	  {
-		if(browserName.equalsIgnoreCase("firefox"))
+		if(browserName.equalsIgnoreCase("chrome"))
 		{
-			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"//driver//geckodriver.exe");  
-			driver = new FirefoxDriver();
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//driver//chromedriver.exe");
+			driver = new ChromeDriver();
 		}
 		
 		else
 		{
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//driver//chromedriver.exe");
-			driver = new ChromeDriver();
+			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"//driver//geckodriver.exe");  
+			driver = new FirefoxDriver();
 		}
 	  }
 
@@ -75,7 +75,7 @@ public class TestCases
 	 @AfterClass
 	 public void afterClass() 
 	 {
-		driver.close();
+		driver.quit();
 	 }
 	
 }
