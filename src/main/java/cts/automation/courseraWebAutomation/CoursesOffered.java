@@ -30,6 +30,7 @@ public class CoursesOffered
 {
 
 	static WebDriver driver;
+	
 	Properties properties;
 	By durationOf_1 = By.xpath("//div[@class='ProductGlance']//span[contains(text(),'Approx. 6 months to complete')]");
 	By durationOf_2 = By.xpath("//div[@class='ProductGlance _9cam1z p-t-2']//span[contains(text(),'Approx. 25 hours to complete')]");

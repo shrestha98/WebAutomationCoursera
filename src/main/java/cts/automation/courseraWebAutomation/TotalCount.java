@@ -6,8 +6,14 @@
  */
 package cts.automation.courseraWebAutomation;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
@@ -19,13 +25,15 @@ public class TotalCount
 {
 
 	static WebDriver driver;
+	By Filter = By.xpath("//button[@id='toggle_filters_button_button']");
+	By Language = By.xpath("//span[@class='filter-name' and contains(text(),'Language')]");
 	
 	public TotalCount(WebDriver driver)
 	{
 		this.driver=driver;
 	}
 	
-	public void totalCountOfCourses() throws InterruptedException 
+	public void totalCountOfCourses() throws InterruptedException, IOException 
 	{
 		//System.setProperty("webdriver.chrome.driver", "C:/Users/asus/Desktop/Major Project/courseraWebDevelopment/driver/chromedriver.exe");
 		//driver = new ChromeDriver();
@@ -40,6 +48,15 @@ public class TotalCount
 		
 		//driver.navigate().back();
 		
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"//src//main//resources//cts//Data.xlsx");
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		XSSFSheet worksheet = workbook.getSheetAt(0);
+		
+
+		Properties prop=new Properties();
+		FileInputStream input=new FileInputStream(System.getProperty("user.dir")+"//src//main//resources//cts//config.properties");
+		prop.load(input);
+		
 		driver.get("https://www.coursera.org/search?query=web%20development&");	
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		//Resizing the windows ( mobile view ) to get better view and clarification
@@ -48,9 +65,9 @@ public class TotalCount
 		Thread.sleep(2000);
 		
 		//Pressing the filter button
-		driver.findElement(By.xpath("//button[@id='toggle_filters_button_button']")).click();
+		driver.findElement(Filter).click();
 		Thread.sleep(4000);
-		driver.findElement(By.xpath("//span[@class='filter-name' and contains(text(),'Language')]")).click();
+		driver.findElement(Language).click();
 		Thread.sleep(4000);
 		driver.findElement(By.xpath("//button[@class='ais-RefinementList-showMore' and contains(text(),'Show more')]")).click();
 		

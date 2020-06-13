@@ -57,15 +57,20 @@ public class TestCases
 	}
 	
 	@Test (priority=2)
-	public void errorMessage() throws InterruptedException
-	{
-		forEnterprise=new ForEnterprise(driver);
-		forEnterprise.errorMessageAtEnterprise();
-	}
+	public void errorMessage() throws InterruptedException, IOException{
+	try {
+		{
+			forEnterprise=new ForEnterprise(driver);
+			forEnterprise.errorMessageAtEnterprise();
+		}
+	} catch (InterruptedException | IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}}
 	
 	
 	@Test (priority=1)
-	public void totalCourses() throws InterruptedException
+	public void totalCourses() throws InterruptedException, IOException
 	{
 		totalCount=new TotalCount(driver);
 		totalCount.totalCountOfCourses();

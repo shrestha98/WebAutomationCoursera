@@ -9,9 +9,15 @@
  */
 package cts.automation.courseraWebAutomation;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.PageLoadStrategy;
@@ -28,13 +34,19 @@ public class ForEnterprise
 {
 
 	static WebDriver driver;
+	By Enterprise = By.xpath("//a[contains(text(),'For Enterprise')]");
+	By Started = By.xpath("//a[@class='cta-button' and contains(text(),'Get started')]");
+	By Connect = By.xpath("//button[text()='Connect with us']");
+	
+	By Institution = By.xpath("//select[@id='Institution_Type__c']");
+	By University = By.xpath("//option[contains(text(),'Private University')]");
 	
 	public ForEnterprise(WebDriver driver)
 	{
 		this.driver=driver;
 	}
 	
-	public void errorMessageAtEnterprise() throws InterruptedException 
+	public void errorMessageAtEnterprise() throws InterruptedException, IOException 
 	{
 		//System.setProperty("webdriver.chrome.driver", "C:/Users/asus/Desktop/Major Project/courseraWebDevelopment/driver/chromedriver.exe");
         
@@ -45,11 +57,20 @@ public class ForEnterprise
        // ChromeOptions options1 = new ChromeOptions();
        // options1.setPageLoadStrategy(PageLoadStrategy.NONE);
         
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"//src//main//resources//cts//Data.xlsx");
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		XSSFSheet worksheet = workbook.getSheetAt(0);
+		
+
+		Properties prop=new Properties();
+		FileInputStream input=new FileInputStream(System.getProperty("user.dir")+"//src//main//resources//cts//config.properties");
+		prop.load(input);
+				
         //Getting the Home Page of the Coursera
         driver.manage().window().maximize();
         driver.get("https://www.coursera.org/");
         driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS) ;
-        driver.findElement(By.xpath("//a[contains(text(),'For Enterprise')]")).click();
+        driver.findElement(Enterprise).click();
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
         
         //Clicking the Product 
@@ -72,56 +93,56 @@ public class ForEnterprise
 	    
 	    //Clicking the element to start filling up the form 
 	    driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS) ;
-        driver.findElement(By.xpath("//a[@class='cta-button' and contains(text(),'Get started')]")).click();
+        driver.findElement(Started).click();
         
         //Inputting the details
         Thread.sleep(5000);
-        driver.findElement(By.xpath("//input[@id='FirstName']")).sendKeys("Dibyajit");
+        driver.findElement(By.xpath(worksheet.getRow(9).getCell(1).getStringCellValue())).sendKeys(prop.getProperty("FirstName"));
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//input[@id='LastName']")).sendKeys("Tripathy");
+        driver.findElement(By.xpath(worksheet.getRow(10).getCell(1).getStringCellValue())).sendKeys(prop.getProperty("LastName"));
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//input[@id='Email']")).sendKeys("djiyt@gm.");
+        driver.findElement(By.xpath(worksheet.getRow(11).getCell(1).getStringCellValue())).sendKeys(prop.getProperty("EMailId"));
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//input[@id='Title']")).sendKeys("PAT");
+        driver.findElement(By.xpath(worksheet.getRow(12).getCell(1).getStringCellValue())).sendKeys(prop.getProperty("Profession"));
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//input[@id='Phone']")).sendKeys("123456789");
+        driver.findElement(By.xpath(worksheet.getRow(13).getCell(1).getStringCellValue())).sendKeys(prop.getProperty("PhoneNo"));
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//input[@id='Company']")).sendKeys("Cognizant");
+        driver.findElement(By.xpath(worksheet.getRow(14).getCell(1).getStringCellValue())).sendKeys(prop.getProperty("Company"));
                
         JavascriptExecutor js = (JavascriptExecutor) driver; //Scrolling the windows to make the element visible 
         js.executeScript("window.scrollBy(0,500)");
     
-        driver.findElement(By.xpath("//select[@id='Institution_Type__c']")).click();
-        driver.findElement(By.xpath("//option[contains(text(),'Private University')]")).click();
+        driver.findElement(Institution).click();
+        driver.findElement(University).click();
         Thread.sleep(1000); 
         
         //selecting the dropdowns
-        Select students = new Select(driver.findElement(By.xpath("//select[@id='Employee_Range__c']")));
+        Select students = new Select(driver.findElement(By.xpath(worksheet.getRow(15).getCell(1).getStringCellValue())));
         students.selectByIndex(2);
         Thread.sleep(3000);      
-        Select users = new Select(driver.findElement(By.xpath("//select[@id='Self_reported_employees_to_buy_for__c']")));
+        Select users = new Select(driver.findElement(By.xpath(worksheet.getRow(16).getCell(1).getStringCellValue())));
         users.selectByIndex(3);
         Thread.sleep(3000);      
         JavascriptExecutor js1 = (JavascriptExecutor) driver;
         js1.executeScript("window.scrollBy(0,190)");
         Thread.sleep(3000);   
-        WebElement country=driver.findElement(By.xpath("//select[@id='Country']")); //selecting country
+        WebElement country=driver.findElement(By.xpath(worksheet.getRow(17).getCell(1).getStringCellValue())); //selecting country
         Select Country=new Select(country);
         Country.selectByIndex(105);
         Thread.sleep(3000);       
         WebDriverWait wait = new WebDriverWait(driver, 40); 
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//select[@id='State']")));        
-        WebElement state=driver.findElement(By.xpath("//select[@id='State']")); //selecting state
+        WebElement state=driver.findElement(By.xpath(worksheet.getRow(18).getCell(1).getStringCellValue())); //selecting state
         Select State=new Select(state);
         State.selectByIndex(20);
         Thread.sleep(3000);
         
         //Submitting the form
-        driver.findElement(By.xpath("//button[text()='Connect with us']")).click();
+        driver.findElement(Connect).click();
         Thread.sleep(2000);
         
         //Printing the Error Message
-        String errorMessage=driver.findElement(By.xpath("//div[@class='mktoErrorMsg']")).getText();
+        String errorMessage=driver.findElement(By.xpath(worksheet.getRow(19).getCell(1).getStringCellValue())).getText();
         System.out.println("Error Message is :- " + errorMessage);
 
         
