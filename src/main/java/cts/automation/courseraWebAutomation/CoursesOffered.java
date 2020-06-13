@@ -7,6 +7,7 @@
 package cts.automation.courseraWebAutomation;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,6 +16,8 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
@@ -28,6 +31,8 @@ public class CoursesOffered
 
 	static WebDriver driver;
 	Properties properties;
+	By durationOf_1 = By.xpath("//div[@class='ProductGlance']//span[contains(text(),'Approx. 6 months to complete')]");
+	By durationOf_2 = By.xpath("//div[@class='ProductGlance _9cam1z p-t-2']//span[contains(text(),'Approx. 25 hours to complete')]");
 	
 	public CoursesOffered(WebDriver driver) 
 	{
@@ -39,22 +44,36 @@ public class CoursesOffered
 		
 		//System.setProperty("webdriver.chrome.driver", "C:/Users/asus/Desktop/Major Project/courseraWebDevelopment/driver/chromedriver.exe");
 		//driver = new ChromeDriver();
-		JavascriptExecutor js = (JavascriptExecutor) driver;
 		
-		//System.out.println(properties.getProperty("course"));
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"//src//main//resources//cts//Data.xlsx");
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		XSSFSheet worksheet = workbook.getSheetAt(0);
+		
+
+		Properties prop=new Properties();
+		FileInputStream input=new FileInputStream(System.getProperty("user.dir")+"//src//main//resources//cts//config.properties");
+		prop.load(input);
+		
+		//worksheet.getRow(1).getCell(3).getStringCellValue()
+		//String browserName=prop.getProperty("browser");
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 		
 		//Searching for the Web Development through text search
 		driver.manage().window().maximize();
-		driver.get("https://www.coursera.org/search?query=Web+Development&");
+		String Course = prop.getProperty("COURSE");
+		driver.get("https://www.coursera.org/search?query=" +Course+"&");
 		Thread.sleep(2000);
 		
 		//Filtering all Web Development courses in English language
 		String originalUrl = driver.getCurrentUrl();
 		String newUrl = originalUrl + "index=prod_all_products_term_optimization";
-		String firstFilter = newUrl + "&allLanguages=" + "English";
+		String Language = prop.getProperty("LANGUAGE");
+		String firstFilter = newUrl + "&allLanguages=" + Language;
 
 		//Second filtering all the English languages courses on the basis of Learning Level
-		String secondFilter = firstFilter + "&productDifficultyLevel=" + "Beginner";
+		String Level = prop.getProperty("LEVEL");
+		String secondFilter = firstFilter + "&productDifficultyLevel=" + Level;
 		driver.get(secondFilter);
 		
 		//Getting all the courses offered for Web Development after applying filter
@@ -62,7 +81,7 @@ public class CoursesOffered
 		Thread.sleep(3000);
 		
 		//Making a list of the Courses by initializing a List
-		List<WebElement> noOfCourses = driver.findElements(By.xpath("//h2[@class='color-primary-text card-title headline-1-text']"));
+		List<WebElement> noOfCourses = driver.findElements(By.xpath(worksheet.getRow(1).getCell(1).getStringCellValue()));
 		System.out.println("Courses are:");
 		
 		//Traversing one by one and getting the names of the courses
@@ -74,7 +93,7 @@ public class CoursesOffered
 		Thread.sleep(3000);
 		
 		//Making a list of the Ratings by initializing a List
-		List<WebElement> ratings = driver.findElements(By.xpath("//span[@class='ratings-text']"));
+		List<WebElement> ratings = driver.findElements(By.xpath(worksheet.getRow(2).getCell(1).getStringCellValue()));
 		System.out.println("Ratings  are:");
 
 		//Traversing one by one and getting the ratings of the first three courses
@@ -97,7 +116,7 @@ public class CoursesOffered
 		//driver.switchTo().window((String) tabs.get(1));
 		
 		//Clicking on the first course
-		WebElement firstTitle=driver.findElement(By.xpath("(//h2[@class='color-primary-text card-title headline-1-text'])[1]"));
+		WebElement firstTitle=driver.findElement(By.xpath(worksheet.getRow(3).getCell(1).getStringCellValue()));
 		firstTitle.click();
 		Thread.sleep(3000);
 		String firstTab=driver.getWindowHandle(); //Storing the second window
@@ -112,7 +131,7 @@ public class CoursesOffered
 		Thread.sleep(3000);
 		js.executeScript("window.scrollBy(0,800)"); //Window scroll
 		Thread.sleep(3000);
-		String durationOf1 = driver.findElement(By.xpath("//div[@class='ProductGlance']//span[contains(text(),'Approx. 6 months to complete')]")).getText();
+		String durationOf1 = driver.findElement(durationOf_1).getText();
 		System.out.println("Duration of 1st Course :  || " + durationOf1);
 
 		driver.close(); //Closing the Tab	
@@ -122,7 +141,7 @@ public class CoursesOffered
      	driver.switchTo().window(homePage);
      	
 		//Clicking on the second course
-		WebElement secondCourse=driver.findElement(By.xpath("(//h2[@class='color-primary-text card-title headline-1-text'])[2]"));
+		WebElement secondCourse=driver.findElement(By.xpath(worksheet.getRow(4).getCell(1).getStringCellValue()));
 		secondCourse.click();
         String secondTab=driver.getWindowHandle();                  
         Set<String> windoidss = driver.getWindowHandles(); 		
@@ -138,7 +157,7 @@ public class CoursesOffered
    		driver.manage().window().setSize(dimn);
         js.executeScript("window.scrollBy(0,800)");
         Thread.sleep(3000);
-        String durationOf2=driver.findElement(By.xpath("//div[@class='ProductGlance _9cam1z p-t-2']//span[contains(text(),'Approx. 25 hours to complete')]")).getText();
+        String durationOf2=driver.findElement(durationOf_2).getText();
         System.out.println("Duration of 2nd Course :  || " + durationOf2);
         driver.manage().window().maximize(); //Maximizing the window
         driver.close(); //Closing the Tab
