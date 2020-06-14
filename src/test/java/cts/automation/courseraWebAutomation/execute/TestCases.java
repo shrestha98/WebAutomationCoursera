@@ -28,59 +28,60 @@ public class TestCases
 	TotalCount totalCount;
 	Properties properties;
 	String browserName;
-	
-	@BeforeClass
+
+
 	@Parameters({"browserName"})
-	
-	  public void beforeClass(@Optional("chrome")String browserName) throws Exception
-	  {
+	@BeforeClass
+
+	public void beforeClass(String browserName) throws Exception
+	{
 		if(browserName.equalsIgnoreCase("chrome"))
 		{
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//driver//chromedriver.exe");
 			driver = new ChromeDriver();
 		}
-		
+
 		else
 		{
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"//driver//geckodriver.exe");  
 			driver = new FirefoxDriver();
 		}
-	  }
+	}
 
-	  
+
 	@Test (priority=0)
 	public void coursesSearched() throws InterruptedException, IOException 
 	{
 		coursesOffered=new CoursesOffered(driver);
 		coursesOffered.totalCoursesOffered();
-		
+
 	}
-	
+
 	@Test (priority=2)
 	public void errorMessage() throws InterruptedException, IOException{
-	try {
-		{
-			forEnterprise=new ForEnterprise(driver);
-			forEnterprise.errorMessageAtEnterprise();
-		}
-	} catch (InterruptedException | IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}}
-	
-	
+		try {
+			{
+				forEnterprise=new ForEnterprise(driver);
+				forEnterprise.errorMessageAtEnterprise();
+			}
+		} catch (InterruptedException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}}
+
+
 	@Test (priority=1)
 	public void totalCourses() throws InterruptedException, IOException
 	{
 		totalCount=new TotalCount(driver);
 		totalCount.totalCountOfCourses();
 	}
-	
 
-	 @AfterClass
-	 public void afterClass() 
-	 {
+
+	@AfterClass
+	public void afterClass() 
+	{
 		driver.quit();
-	 }
-	
+	}
+
 }
