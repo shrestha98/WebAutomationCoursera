@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-06-13T23:36:09 IST" name="Surefire suite" finished-at="2020-06-13T23:38:25 IST" duration-ms="135447">
+  <suite started-at="2020-06-15T23:22:27 IST" name="Suite" finished-at="2020-06-15T23:27:40 IST" duration-ms="312922">
     <groups>
     </groups>
-    <test started-at="2020-06-13T23:36:09 IST" name="Surefire test" finished-at="2020-06-13T23:38:25 IST" duration-ms="135447">
+    <test started-at="2020-06-15T23:22:27 IST" name="Test For Firefox" finished-at="2020-06-15T23:25:13 IST" duration-ms="165608">
       <class name="cts.automation.courseraWebAutomation.execute.TestCases">
-        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:cts.automation.courseraWebAutomation.execute.TestCases@28ac3dc3]" started-at="2020-06-13T23:36:09 IST" name="beforeClass" finished-at="2020-06-13T23:36:12 IST" duration-ms="2581" status="PASS">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:cts.automation.courseraWebAutomation.execute.TestCases@21a947fe]" started-at="2020-06-15T23:22:27 IST" name="beforeClass" finished-at="2020-06-15T23:22:39 IST" duration-ms="11262" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method signature="coursesSearched()[pri:0, instance:cts.automation.courseraWebAutomation.execute.TestCases@21a947fe]" started-at="2020-06-15T23:22:39 IST" name="coursesSearched" finished-at="2020-06-15T23:23:51 IST" duration-ms="72178" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- coursesSearched -->
+        <test-method signature="totalCourses()[pri:1, instance:cts.automation.courseraWebAutomation.execute.TestCases@21a947fe]" started-at="2020-06-15T23:23:51 IST" name="totalCourses" finished-at="2020-06-15T23:24:19 IST" duration-ms="28502" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- totalCourses -->
+        <test-method signature="errorMessage()[pri:2, instance:cts.automation.courseraWebAutomation.execute.TestCases@21a947fe]" started-at="2020-06-15T23:24:19 IST" name="errorMessage" finished-at="2020-06-15T23:25:06 IST" duration-ms="47162" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- errorMessage -->
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:cts.automation.courseraWebAutomation.execute.TestCases@21a947fe]" started-at="2020-06-15T23:25:06 IST" name="afterClass" finished-at="2020-06-15T23:25:13 IST" duration-ms="6444" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+      </class> <!-- cts.automation.courseraWebAutomation.execute.TestCases -->
+    </test> <!-- Test For Firefox -->
+    <test started-at="2020-06-15T23:25:13 IST" name="Test For Chrome" finished-at="2020-06-15T23:27:40 IST" duration-ms="147228">
+      <class name="cts.automation.courseraWebAutomation.execute.TestCases">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:cts.automation.courseraWebAutomation.execute.TestCases@58fdd99]" started-at="2020-06-15T23:25:13 IST" name="beforeClass" finished-at="2020-06-15T23:25:20 IST" duration-ms="7269" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,23 +49,23 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="coursesSearched()[pri:0, instance:cts.automation.courseraWebAutomation.execute.TestCases@28ac3dc3]" started-at="2020-06-13T23:36:12 IST" name="coursesSearched" finished-at="2020-06-13T23:37:12 IST" duration-ms="59886" status="PASS">
+        <test-method signature="coursesSearched()[pri:0, instance:cts.automation.courseraWebAutomation.execute.TestCases@58fdd99]" started-at="2020-06-15T23:25:20 IST" name="coursesSearched" finished-at="2020-06-15T23:26:29 IST" duration-ms="68862" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- coursesSearched -->
-        <test-method signature="totalCourses()[pri:1, instance:cts.automation.courseraWebAutomation.execute.TestCases@28ac3dc3]" started-at="2020-06-13T23:37:12 IST" name="totalCourses" finished-at="2020-06-13T23:37:39 IST" duration-ms="26821" status="PASS">
+        <test-method signature="totalCourses()[pri:1, instance:cts.automation.courseraWebAutomation.execute.TestCases@58fdd99]" started-at="2020-06-15T23:26:29 IST" name="totalCourses" finished-at="2020-06-15T23:26:57 IST" duration-ms="27633" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- totalCourses -->
-        <test-method signature="errorMessage()[pri:2, instance:cts.automation.courseraWebAutomation.execute.TestCases@28ac3dc3]" started-at="2020-06-13T23:37:39 IST" name="errorMessage" finished-at="2020-06-13T23:38:23 IST" duration-ms="44689" status="PASS">
+        <test-method signature="errorMessage()[pri:2, instance:cts.automation.courseraWebAutomation.execute.TestCases@58fdd99]" started-at="2020-06-15T23:26:57 IST" name="errorMessage" finished-at="2020-06-15T23:27:39 IST" duration-ms="41956" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- errorMessage -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:cts.automation.courseraWebAutomation.execute.TestCases@28ac3dc3]" started-at="2020-06-13T23:38:23 IST" name="afterClass" finished-at="2020-06-13T23:38:25 IST" duration-ms="1443" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:cts.automation.courseraWebAutomation.execute.TestCases@58fdd99]" started-at="2020-06-15T23:27:39 IST" name="afterClass" finished-at="2020-06-15T23:27:40 IST" duration-ms="1504" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
       </class> <!-- cts.automation.courseraWebAutomation.execute.TestCases -->
-    </test> <!-- Surefire test -->
-  </suite> <!-- Surefire suite -->
+    </test> <!-- Test For Chrome -->
+  </suite> <!-- Suite -->
 </testng-results>

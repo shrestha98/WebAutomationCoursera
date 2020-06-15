@@ -8,6 +8,7 @@ package cts.automation.courseraWebAutomation;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
@@ -25,8 +26,12 @@ public class TotalCount
 {
 
 	static WebDriver driver;
+	
 	By Filter = By.xpath("//button[@id='toggle_filters_button_button']");
 	By Language = By.xpath("//span[@class='filter-name' and contains(text(),'Language')]");
+	
+	private static final String FILE_NAME_1 = System.getProperty("user.dir")+"//Output//TotalLanguage.txt";
+	private static final String FILE_NAME_2 = System.getProperty("user.dir")+"//Output//TotalLevel.txt";
 	
 	public TotalCount(WebDriver driver)
 	{
@@ -73,12 +78,16 @@ public class TotalCount
 		
 		//Retrieving all the languages from the filter
 		List<WebElement> Languages = driver.findElements(By.xpath("//*[@id=\"rendered-content\"]/div/div/div[1]/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div[2]/ul/div[1]/li/div[2]/div/div/div/ul"));
-        System.out.println(Languages.size());
+        //System.out.println(Languages.size());
+		FileWriter fw=new FileWriter(FILE_NAME_1);
         for (WebElement webElement : Languages) 
         {
+        	Thread.sleep(1000);
             String languageName = webElement.getText();
-            System.out.println(languageName);
+            //System.out.println(languageName);
+            fw.write(languageName);
         }             
+        fw.close();
         Thread.sleep(4000);
 		driver.findElement(By.xpath("//span[@class='filter-name' and contains(text(),'Language')]")).click();
 		Thread.sleep(4000);
@@ -86,11 +95,13 @@ public class TotalCount
 		
 		////Retrieving all the levels from the filter
 		List<WebElement> Levels = driver.findElements(By.xpath("//*[@id=\"rendered-content\"]/div/div/div[1]/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div[2]/ul/div[2]/li/div[2]"));
-        System.out.println(Levels.size());
+        //System.out.println(Levels.size());
+		FileWriter fw1=new FileWriter(FILE_NAME_2);
         for (WebElement webElement : Levels) 
         {
             String LevelName = webElement.getText();
-            System.out.println(LevelName);
+            //System.out.println(LevelName);
+            fw1.write(LevelName);
         }
 
         Thread.sleep(2000);
@@ -102,6 +113,7 @@ public class TotalCount
    		driver.manage().window().setSize(dimn);
    		driver.manage().window().maximize();
    		//driver.quit();
+   		fw1.close();
 	}
 
 

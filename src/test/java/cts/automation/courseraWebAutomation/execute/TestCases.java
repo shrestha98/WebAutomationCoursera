@@ -6,9 +6,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
@@ -41,16 +43,22 @@ public class TestCases
 			driver = new ChromeDriver();
 		}
 
-		else
+		else if(browserName.equalsIgnoreCase("firefox"))
 		{
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"//driver//geckodriver.exe");  
 			driver = new FirefoxDriver();
+		}
+		
+		else
+		{
+			System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"//driver//IEDriverServer.exe");
+			driver = new InternetExplorerDriver();
 		}
 	}
 
 
 	@Test (priority=0)
-	public void coursesSearched() throws InterruptedException, IOException 
+	public void coursesSearched() throws InterruptedException, IOException, InvalidFormatException 
 	{
 		coursesOffered=new CoursesOffered(driver);
 		coursesOffered.totalCoursesOffered();

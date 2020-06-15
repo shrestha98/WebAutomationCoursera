@@ -1,16 +1,29 @@
 package cts.automation.courseraWebAutomation;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -19,10 +32,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class test 
 {
 	static WebDriver driver;
+	private static final String FILE_NAME = "C:\\Users\\asus\\Desktop\\Major Project\\output.xlsx";
+	private static final String FILE_NAME_1 = "C:\\Users\\asus\\Desktop\\Major Project\\Language.txt";
+	private static final String FILE_NAME_2 = "C:\\Users\\asus\\Desktop\\Major Project\\Level.txt";
 	
-	public static void main(String[] args) throws InterruptedException 
+	public static void main(String[] args) throws InterruptedException, InvalidFormatException, IOException 
 	{
-		System.setProperty("webdriver.chrome.driver", "C:/Users/asus/Desktop/Major Project/courseraWebDevelopment/driver/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//driver//chromedriver.exe");
 		driver = new ChromeDriver();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		driver.manage().window().maximize();
@@ -44,27 +60,41 @@ public class test
 		
 		//Making a list of the Courses by initializing a List
 		List<WebElement> noOfCourses = driver.findElements(By.xpath("//h2[@class='color-primary-text card-title headline-1-text']"));
-		System.out.println("Courses are:");
+		//System.out.println("Courses are:");
 		
+		
+		InputStream inp = new FileInputStream(FILE_NAME); 
+	    Workbook wb = WorkbookFactory.create(inp); 
+	    Sheet sheet = wb.getSheetAt(0); 
+	    //int num = sheet.getLastRowNum(); 
+	    Row row2 = sheet.createRow(1);
+	    
 		//Traversing one by one and getting the names of the courses
-		for (int i = 0; i < 6; i++) {
-			System.out.println(noOfCourses.get(i).getText());
+		for (int i = 0; i < 6; i++) 
+		{
+			//System.out.println(noOfCourses.get(i).getText());
+			row2.createCell(i).setCellValue(noOfCourses.get(i).getText());
 			Thread.sleep(1000);
 		}
-		System.out.println("-----------------------------------------------------------------");
+		 
+	    
+	    Thread.sleep(1000);
+	    
+		//System.out.println("-----------------------------------------------------------------");
 		Thread.sleep(3000);
 		
 		//Making a list of the Ratings by initializing a List
 		List<WebElement> ratings = driver.findElements(By.xpath("//span[@class='ratings-text']"));
-		System.out.println("Ratings  are:");
+		//System.out.println("Ratings  are:");
 
 		//Traversing one by one and getting the ratings of the first three courses
-		for (int i = 0; i < 3; i++) {
-			int j = i + 1;
-			System.out.println(j + "." + ratings.get(i).getText());
+		Row row4 = sheet.createRow(3);
+		for (int i = 0; i < 6; i++) {
+			row4.createCell(i).setCellValue(ratings.get(i).getText());
 			Thread.sleep(1000);
 		}
-		System.out.println("-----------------------------------------------------------------");
+		
+		//System.out.println("-----------------------------------------------------------------");
 		Thread.sleep(5000);
 		WebElement firstTitle=driver.findElement(By.xpath("(//h2[@class='color-primary-text card-title headline-1-text'])[1]"));
 		firstTitle.click();
@@ -82,7 +112,9 @@ public class test
 		js.executeScript("window.scrollBy(0,800)"); //Window scroll
 		Thread.sleep(3000);
 		String durationOf1 = driver.findElement(By.xpath("//div[@class='ProductGlance']//span[contains(text(),'Approx. 6 months to complete')]")).getText();
-		System.out.println("Duration of 1st Course :  || " + durationOf1);
+		Row row6 = sheet.createRow(5);
+		row6.createCell(0).setCellValue(durationOf1);
+		//"Duration of 1st Course :  || " + 
 
 		driver.close(); //Closing the Tab	
      	Thread.sleep(3000);
@@ -108,7 +140,10 @@ public class test
         js.executeScript("window.scrollBy(0,800)");
         Thread.sleep(3000);
         String durationOf2=driver.findElement(By.xpath("//div[@class='ProductGlance _9cam1z p-t-2']//span[contains(text(),'Approx. 25 hours to complete')]")).getText();
-        System.out.println("Duration of 2nd Course :  || " + durationOf2);
+        //Row row8 = sheet.createRow(7);
+		row6.createCell(1).setCellValue(durationOf2);
+		//Duration of 2nd Course :  || " + 
+        //System.out.println("Duration of 2nd Course :  || " + durationOf2);
         driver.manage().window().maximize(); //Maximizing the window
         driver.close(); //Closing the Tab
         
@@ -132,12 +167,19 @@ public class test
 		
 		//Retrieving all the languages from the filter
 		List<WebElement> Languages = driver.findElements(By.xpath("//*[@id=\"rendered-content\"]/div/div/div[1]/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div[2]/ul/div[1]/li/div[2]/div/div/div/ul"));
-        System.out.println(Languages.size());
+        //System.out.println(Languages.size());
+		//int count=sheet.getLastRowNum();
+		//count=count+1;
+		FileWriter fw=new FileWriter(FILE_NAME_1);
         for (WebElement webElement : Languages) 
         {
+        	//Row row10 = sheet.createRow(count);
             String languageName = webElement.getText();
-            System.out.println(languageName);
-        }             
+            fw.write(languageName);
+            //row10.createCell(0).setCellValue(languageName);
+            //count++;
+        }    
+        fw.close();
         Thread.sleep(4000);
 		driver.findElement(By.xpath("//span[@class='filter-name' and contains(text(),'Language')]")).click();
 		Thread.sleep(4000);
@@ -145,13 +187,22 @@ public class test
 		
 		////Retrieving all the levels from the filter
 		List<WebElement> Levels = driver.findElements(By.xpath("//*[@id=\"rendered-content\"]/div/div/div[1]/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div[2]/ul/div[2]/li/div[2]"));
-        System.out.println(Levels.size());
+        //System.out.println(Levels.size());
+		//int count1=sheet.getLastRowNum();
+		FileWriter fw1=new FileWriter(FILE_NAME_2);
         for (WebElement webElement : Levels) 
         {
+        	//Row row12 = sheet.createRow(count1);
             String LevelName = webElement.getText();
-            System.out.println(LevelName);
+            fw1.write(LevelName);
+            //row12.createCell(0).setCellValue(LevelName);
+           // count1++;
         }
-
+        fw1.close();
+        FileOutputStream fileOut = new FileOutputStream(FILE_NAME); 
+	    wb.write(fileOut); 
+	    fileOut.close();
+	    
         Thread.sleep(2000);
         //driver.quit();
         //String homePage = driver.getWindowHandle();
@@ -173,7 +224,7 @@ public class test
         WebElement product = driver.findElement(By.linkText("Product"));
         action.moveToElement(product).perform();
         driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS) ;
-        driver.findElement(By.linkText("Coursera for Campus")).click();
+        driver.findElement(By.linkText("For Campus")).click();
         
         //Switching to the next tab to pass the driver
         String parentwindow=driver.getWindowHandle();

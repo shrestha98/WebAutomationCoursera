@@ -9,13 +9,20 @@ package cts.automation.courseraWebAutomation;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
@@ -35,12 +42,14 @@ public class CoursesOffered
 	By durationOf_1 = By.xpath("//div[@class='ProductGlance']//span[contains(text(),'Approx. 6 months to complete')]");
 	By durationOf_2 = By.xpath("//div[@class='ProductGlance _9cam1z p-t-2']//span[contains(text(),'Approx. 25 hours to complete')]");
 	
+	private static final String FILE_NAME = System.getProperty("user.dir")+"//Output//TotalCourse.xlsx";
+	
 	public CoursesOffered(WebDriver driver) 
 	{
 		this.driver = driver;
 	}
 	
-	public void totalCoursesOffered() throws InterruptedException, IOException 
+	public void totalCoursesOffered() throws InterruptedException, IOException, InvalidFormatException 
 	{
 		
 		//System.setProperty("webdriver.chrome.driver", "C:/Users/asus/Desktop/Major Project/courseraWebDevelopment/driver/chromedriver.exe");
@@ -83,27 +92,35 @@ public class CoursesOffered
 		
 		//Making a list of the Courses by initializing a List
 		List<WebElement> noOfCourses = driver.findElements(By.xpath(worksheet.getRow(1).getCell(1).getStringCellValue()));
-		System.out.println("Courses are:");
+		//System.out.println("Courses are:");
 		
+		InputStream inp = new FileInputStream(FILE_NAME); 
+	    Workbook wb = WorkbookFactory.create(inp); 
+	    Sheet sheet = wb.getSheetAt(0);
+	  //int num = sheet.getLastRowNum();
+	    Row row2 = sheet.createRow(1);
 		//Traversing one by one and getting the names of the courses
 		for (int i = 0; i < 6; i++) {
-			System.out.println(noOfCourses.get(i).getText());
+			//System.out.println(noOfCourses.get(i).getText());
+			row2.createCell(i).setCellValue(noOfCourses.get(i).getText());
 			Thread.sleep(1000);
 		}
-		System.out.println("-----------------------------------------------------------------");
+		//System.out.println("-----------------------------------------------------------------");
 		Thread.sleep(3000);
 		
 		//Making a list of the Ratings by initializing a List
 		List<WebElement> ratings = driver.findElements(By.xpath(worksheet.getRow(2).getCell(1).getStringCellValue()));
-		System.out.println("Ratings  are:");
+		//System.out.println("Ratings  are:");
 
 		//Traversing one by one and getting the ratings of the first three courses
-		for (int i = 0; i < 3; i++) {
-			int j = i + 1;
-			System.out.println(j + "." + ratings.get(i).getText());
+		Row row4 = sheet.createRow(3);
+		for (int i = 0; i < 6; i++) {
+			
+			//System.out.println(ratings.get(i).getText());
+			row4.createCell(i).setCellValue(ratings.get(i).getText());
 			Thread.sleep(1000);
 		}
-		System.out.println("-----------------------------------------------------------------");
+		//System.out.println("-----------------------------------------------------------------");
 		Thread.sleep(5000);
 		
 		/*Now getting to the first window to click on every Courses
@@ -133,7 +150,9 @@ public class CoursesOffered
 		js.executeScript("window.scrollBy(0,800)"); //Window scroll
 		Thread.sleep(3000);
 		String durationOf1 = driver.findElement(durationOf_1).getText();
-		System.out.println("Duration of 1st Course :  || " + durationOf1);
+		//System.out.println("Duration of 1st Course :  || " + durationOf1);
+		Row row6 = sheet.createRow(5);
+		row6.createCell(0).setCellValue(durationOf1);
 
 		driver.close(); //Closing the Tab	
      	Thread.sleep(3000);
@@ -159,7 +178,8 @@ public class CoursesOffered
         js.executeScript("window.scrollBy(0,800)");
         Thread.sleep(3000);
         String durationOf2=driver.findElement(durationOf_2).getText();
-        System.out.println("Duration of 2nd Course :  || " + durationOf2);
+        row6.createCell(1).setCellValue(durationOf2);
+        //System.out.println("Duration of 2nd Course :  || " + durationOf2);
         driver.manage().window().maximize(); //Maximizing the window
         driver.close(); //Closing the Tab
         
@@ -167,6 +187,9 @@ public class CoursesOffered
         driver.switchTo().window(homePage);
         Thread.sleep(2000);
         //driver.quit();
+        FileOutputStream fileOut = new FileOutputStream(FILE_NAME); 
+	    wb.write(fileOut); 
+	    fileOut.close();
 
 	}
 
