@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -29,6 +30,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -39,10 +42,13 @@ public class CoursesOffered
 	static WebDriver driver;
 	
 	Properties properties;
+	
 	By durationOf_1 = By.xpath("//div[@class='ProductGlance']//span[contains(text(),'Approx. 6 months to complete')]");
 	By durationOf_2 = By.xpath("//div[@class='ProductGlance _9cam1z p-t-2']//span[contains(text(),'Approx. 25 hours to complete')]");
 	
 	private static final String FILE_NAME = System.getProperty("user.dir")+"//Output//TotalCourse.xlsx";
+	private static final String ScreenShot1 = System.getProperty("user.dir")+"//Output//ScreenShots//FirstCourse.png";
+	private static final String ScreenShot2 = System.getProperty("user.dir")+"//Output//ScreenShots//SecondCourse.png";
 	
 	public CoursesOffered(WebDriver driver) 
 	{
@@ -147,6 +153,11 @@ public class CoursesOffered
 		Thread.sleep(3000);
 		driver.switchTo().window(firstTab); //Switching to the First course
 		Thread.sleep(3000);
+		TakesScreenshot scrShot =((TakesScreenshot)driver);
+	    File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+	    File DestFile=new File(ScreenShot1);
+	    FileUtils.copyFile(SrcFile, DestFile);
+	    Thread.sleep(3000);
 		js.executeScript("window.scrollBy(0,800)"); //Window scroll
 		Thread.sleep(3000);
 		String durationOf1 = driver.findElement(durationOf_1).getText();
@@ -171,6 +182,11 @@ public class CoursesOffered
    		
    	    driver.switchTo().window(secondTab); //switching the tab to the second course and pass the driver   
         Thread.sleep(5000);
+        TakesScreenshot scrShot1 =((TakesScreenshot)driver);
+	    File SrcFile1=scrShot1.getScreenshotAs(OutputType.FILE);
+	    File DestFile1=new File(ScreenShot2);
+	    FileUtils.copyFile(SrcFile1, DestFile1);
+	    Thread.sleep(3000);
         
         //Putting it into the Mobile view for better Clarification
    		Dimension dimn = new Dimension(1051,806); //Setting the window size
