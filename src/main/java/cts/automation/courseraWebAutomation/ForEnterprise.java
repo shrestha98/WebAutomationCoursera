@@ -93,6 +93,7 @@ public class ForEnterprise
 	    
 	    //Clicking the element to start filling up the form 
 	    driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS) ;
+	    Thread.sleep(2000);
         driver.findElement(Started).click();
         
         //Inputting the details

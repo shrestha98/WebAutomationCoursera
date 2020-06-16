@@ -6,8 +6,9 @@
     <classes>
       <class name="cts.automation.courseraWebAutomation.execute.TestCases">
         <methods>
+          <include name="startTest"/>
           <include name="coursesSearched"/>
-          <include name="beforeClass"/>
+          <include name="beforeTest"/>
           <include name="afterClass"/>
         </methods>
       </class> <!-- cts.automation.courseraWebAutomation.execute.TestCases -->
@@ -18,8 +19,9 @@
     <classes>
       <class name="cts.automation.courseraWebAutomation.execute.TestCases">
         <methods>
+          <include name="startTest"/>
           <include name="coursesSearched"/>
-          <include name="beforeClass"/>
+          <include name="beforeTest"/>
           <include name="afterClass"/>
         </methods>
       </class> <!-- cts.automation.courseraWebAutomation.execute.TestCases -->

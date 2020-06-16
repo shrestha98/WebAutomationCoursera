@@ -18,12 +18,18 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
 import cts.automation.courseraWebAutomation.CoursesOffered;
 import cts.automation.courseraWebAutomation.ForEnterprise;
 import cts.automation.courseraWebAutomation.TotalCount;
 
 public class TestCases 
 {
+	static ExtentTest test;
+	static ExtentReports report;
 	static WebDriver driver;
 	CoursesOffered coursesOffered;
 	ForEnterprise forEnterprise;
@@ -31,11 +37,17 @@ public class TestCases
 	Properties properties;
 	String browserName;
 
+	@BeforeClass
+	public static void startTest()
+	{
+		report = new ExtentReports(System.getProperty("user.dir")+"\\Output\\ExtentReportResults.html");
+		test = report.startTest("ExtentReport");
+	}
 
 	@Parameters({"browserName"})
-	@BeforeClass
+	@BeforeTest
 
-	public void beforeClass(String browserName) throws Exception
+	public void beforeTest(String browserName) throws Exception
 	{
 		if(browserName.equalsIgnoreCase("chrome"))
 		{
@@ -48,41 +60,79 @@ public class TestCases
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"//driver//geckodriver.exe");  
 			driver = new FirefoxDriver();
 		}
-		
+
 		else
 		{
 			System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"//driver//IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 		}
+
+
 	}
 
 
 	@Test (priority=0)
 	public void coursesSearched() throws InterruptedException, IOException, InvalidFormatException 
 	{
+		int count=0;
 		coursesOffered=new CoursesOffered(driver);
 		coursesOffered.totalCoursesOffered();
-
+		count=count+1;
+		if(count==1)
+		{
+			test.log(LogStatus.PASS, "Courses Searched Passed");
+		}
+		else
+		{
+			test.log(LogStatus.FAIL, "Courses Searched Failed");
+		}
 	}
 
 	@Test (priority=2)
-	public void errorMessage() throws InterruptedException, IOException{
+	public void errorMessage() throws InterruptedException, IOException
+	{
 		try {
 			{
+				int count=0;
 				forEnterprise=new ForEnterprise(driver);
 				forEnterprise.errorMessageAtEnterprise();
+				count=count+1;
+				if(count==1)
+				{
+					test.log(LogStatus.PASS, "Error Message Passed");
+				}
+				else
+				{
+					test.log(LogStatus.FAIL, "Error Message Failed");
+				}
 			}
-		} catch (InterruptedException | IOException e) {
-			// TODO Auto-generated catch block
+		} 
+
+		catch (InterruptedException | IOException e)
+
+		{
+
 			e.printStackTrace();
-		}}
+		}
+
+	}
 
 
 	@Test (priority=1)
 	public void totalCourses() throws InterruptedException, IOException
 	{
+		int count=0;
 		totalCount=new TotalCount(driver);
 		totalCount.totalCountOfCourses();
+		count=count+1;
+		if(count==1)
+		{
+			test.log(LogStatus.PASS, "Total Count Passed");
+		}
+		else
+		{
+			test.log(LogStatus.FAIL, "Total Count Failed");
+		}
 	}
 
 
@@ -90,6 +140,8 @@ public class TestCases
 	public void afterClass() 
 	{
 		driver.quit();
+		report.endTest(test);
+		report.flush();
 	}
 
 }
