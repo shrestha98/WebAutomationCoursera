@@ -61,8 +61,7 @@ public class test
 		//Making a list of the Courses by initializing a List
 		List<WebElement> noOfCourses = driver.findElements(By.xpath("//h2[@class='color-primary-text card-title headline-1-text']"));
 		//System.out.println("Courses are:");
-		
-		
+	
 		InputStream inp = new FileInputStream(FILE_NAME); 
 	    Workbook wb = WorkbookFactory.create(inp); 
 	    Sheet sheet = wb.getSheetAt(0); 
@@ -76,8 +75,7 @@ public class test
 			row2.createCell(i).setCellValue(noOfCourses.get(i).getText());
 			Thread.sleep(1000);
 		}
-		 
-	    
+		  
 	    Thread.sleep(1000);
 	    
 		//System.out.println("-----------------------------------------------------------------");
@@ -146,8 +144,7 @@ public class test
         //System.out.println("Duration of 2nd Course :  || " + durationOf2);
         driver.manage().window().maximize(); //Maximizing the window
         driver.close(); //Closing the Tab
-        
-        
+             
         driver.switchTo().window(homePage);
         Thread.sleep(2000);
         
@@ -178,7 +175,8 @@ public class test
             fw.write(languageName);
             //row10.createCell(0).setCellValue(languageName);
             //count++;
-        }    
+        }
+        
         fw.close();
         Thread.sleep(4000);
 		driver.findElement(By.xpath("//span[@class='filter-name' and contains(text(),'Language')]")).click();
@@ -198,6 +196,7 @@ public class test
             //row12.createCell(0).setCellValue(LevelName);
            // count1++;
         }
+        
         fw1.close();
         FileOutputStream fileOut = new FileOutputStream(FILE_NAME); 
 	    wb.write(fileOut); 
@@ -254,10 +253,10 @@ public class test
         driver.findElement(By.xpath("//input[@id='Phone']")).sendKeys("123456789");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//input[@id='Company']")).sendKeys("Cognizant");
-               
+        
         //JavascriptExecutor js = (JavascriptExecutor) driver; //Scrolling the windows to make the element visible 
         js.executeScript("window.scrollBy(0,500)");
-    
+        
         driver.findElement(By.xpath("//select[@id='Institution_Type__c']")).click();
         driver.findElement(By.xpath("//option[contains(text(),'Private University')]")).click();
         Thread.sleep(1000); 
