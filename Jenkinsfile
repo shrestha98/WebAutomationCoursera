@@ -1,28 +1,22 @@
-pipeline {
+pipeline{
     agent any
+    
     tools {
-        maven 'Maven 3.3.9'
-        jdk 'jdk8'
+        maven "my_maven_3.3.9"
     }
+    
     stages {
-        stage ('Initialize') {
+        stage ("Build") {
             steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                '''
+                sh "mvn -version"
+                sh "mvn clean install"
             }
         }
-
-        stage ('Build') {
-            steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install' 
-            }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-                }
-            }
+    }
+    
+    post {
+        always {
+            cleanWs()
         }
     }
 }
